@@ -14,7 +14,9 @@ class CreateView extends View {
   }
 
   render() {
-    view.content.html( template({ shortcut: view.model.toJSON() }) );
+    view.content.html( template({
+      shortcut: view.model.toJSON()
+    }) );
     view.createShortcutInput = $("#createShortcutInput");
     view.createShortcutBtn = $("#createShortcutBtn");
     view.createShortcutBtn.click(view.createShortcut);
@@ -22,14 +24,8 @@ class CreateView extends View {
 
   createShortcut() {
     view.model.set('url',view.createShortcutInput.val());
-
     view.model.save([],{ success:function(model,res){
-
-      if(res.success) {
-        view.model.set( res.shortcut );
-        view.render();
-      }
-
+      view.render();
     }});
   }
 

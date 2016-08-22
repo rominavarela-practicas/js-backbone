@@ -13,7 +13,7 @@ const App = Router.extend({
   },
 
   routes: {
-    '': function(){this.views.create.render()},
+    'create': function(){this.views.create.render()},
     'all': function(){this.views.all.render()}
   }
 

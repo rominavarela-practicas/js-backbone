@@ -9,29 +9,19 @@ class AllView extends View {
 
   initialize() {
     view = this;
-    view.collection = new ShortcutCollection();
     view.content = $("#content");
+    view.collection = new ShortcutCollection();
+    view.collection.fetch({ success:function(model,res){
+      view.render();
+    }});
   }
 
   render() {
-    view.content.html( template({}) );
-    /*view.createShortcutInput = $("#createShortcutInput");
-    view.createShortcutBtn = $("#createShortcutBtn");
-    view.createShortcutBtn.click(view.createShortcut);*/
+    view.content.html( template( {
+      base:view.collection.defaults.base,
+      shortcuts:view.collection.toJSON()
+    } ));
   }
-
-  /*createShortcut() {
-    view.model.set('url',view.createShortcutInput.val());
-
-    view.model.save([],{ success:function(model,res){
-
-      if(res.success) {
-        view.model.set( res.shortcut );
-        view.render();
-      }
-
-    }});
-  }*/
 
 }
 
