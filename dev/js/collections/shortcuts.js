@@ -1,11 +1,10 @@
 import { Collection } from 'backbone';
-import Shortcut from 'models/shortcut';
+import Shortcut from '../models/shortcut';
 
-class ShortcutsCollection extends Collection {
-  constructor(models,options) {
+class ShortcutCollection extends Collection {
+  initialize() {
     this.model = Shortcut;
-    super(models, options);
   }
 }
 
-export default new ShortcutsCollection();
+export default ShortcutCollection;

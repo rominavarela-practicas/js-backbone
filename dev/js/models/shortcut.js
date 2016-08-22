@@ -6,8 +6,7 @@ class Shortcut extends Model {
   /**
    * @config url - model's base url
   **/
-  constructor() {
-    super();
+  initialize() {
     this.url = ServicesUrl + "/shortcut";
   }
 
